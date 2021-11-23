@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="GithubUserAndroidText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
+    <style name="GithubUserAndroidText.Italic">
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="GithubUserAndroidText.Black">
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="GithubUserAndroidText.Grey">
+        <item name="android:textColor">@color/colorGrey</item>
+    </style>
+
+    <style name="GithubUserAndroidText.Italic.Black">
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+</resources>
