@@ -1,21 +1,23 @@
 package com.example.githubuserproject.ui
 
 import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.githubuserproject.R
 import com.example.githubuserproject.base.BaseActivity
 import com.example.githubuserproject.data.response.UserResponse
-import com.example.githubuserproject.utils.Resource
+import com.example.githubuserproject.utils.ApiResponse
 import com.example.githubuserproject.utils.showToast
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.flow.collect
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
     private lateinit var userAdapter: UserAdapter
 
-    private val userViewModel: CharactersViewModel by viewModels()
+    private val userViewModel: UserViewModel by viewModels()
 
     private var users: ArrayList<UserResponse> = arrayListOf()
 
@@ -35,19 +37,26 @@ class MainActivity : BaseActivity() {
     }
 
     override fun initObservable() {
-        userViewModel.characters.observe(this, {
-            when (it.status) {
-                Resource.Status.SUCCESS -> {
-                    if (!it.data.isNullOrEmpty()) userAdapter.setItems(ArrayList(it.data))
-                }
-                Resource.Status.ERROR ->{
-                    showToast(this, it.message)
-                }
-                Resource.Status.LOADING -> {
+        lifecycleScope.launchWhenStarted {
+            userViewModel.getUsers(0, 20).collect {
+                when(it){
+                    is ApiResponse.Success -> {
+                        it.data?.let { datas ->
+                            users.clear()
+                            users.addAll(datas)
+                            userAdapter.notifyDataSetChanged()
+                        }
 
+                    }
+                    is ApiResponse.Failure -> {
+                        showToast(this@MainActivity, it.message)
+                    }
+                    is ApiResponse.Loading -> {
+
+                    }
                 }
             }
-        })
+        }
     }
 
     private fun initRecyclerView() {

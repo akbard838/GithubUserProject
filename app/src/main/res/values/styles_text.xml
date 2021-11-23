@@ -10,8 +10,20 @@
         <item name="android:textStyle">italic</item>
     </style>
 
-    <style name="GithubUserAndroidText.Black">
+    <style name="GithubUserAndroidText.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="GithubUserAndroidText.Bold.Black">
         <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="GithubUserAndroidText.White">
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+
+    <style name="GithubUserAndroidText.Bold.White">
+        <item name="android:textColor">@color/colorWhite</item>
     </style>
 
     <style name="GithubUserAndroidText.Grey">

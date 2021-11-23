@@ -30,7 +30,7 @@ class UserAdapter(
             tvId.text = data.id.toString()
             imgUser.setImagePath(
                 holder.itemView.context,
-                data.avatarUrl ?: emptyString(),
+                data.avatar_url ?: emptyString(),
                 pbUser,
                 0
             )
@@ -46,11 +46,5 @@ class UserAdapter(
         val tvName = itemView.findViewById<AppCompatTextView>(R.id.tvName)
         val tvId = itemView.findViewById<AppCompatTextView>(R.id.tvId)
         val pbUser = itemView.findViewById<ProgressBar>(R.id.pbUser)
-    }
-
-    fun setItems(items: ArrayList<UserResponse>) {
-        users.clear()
-        users.addAll(items)
-        notifyDataSetChanged()
     }
 }

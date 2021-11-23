@@ -1,41 +1,36 @@
 package com.example.githubuserproject.di
 
-import com.example.githubuserproject.data.CharacterRepository
-import com.example.githubuserproject.data.remote.CharacterRemoteDataSource
-import com.example.githubuserproject.data.remote.CharacterService
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
+import com.example.githubuserproject.data.remote.UserApiService
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    @Singleton
     @Provides
-    fun provideRetrofit(gson: Gson) : Retrofit = Retrofit.Builder()
-        .baseUrl("https://api.github.com/")
-        .addConverterFactory(GsonConverterFactory.create(gson))
+    @Singleton
+    fun providesMoshi(): Moshi = Moshi
+        .Builder()
+        .add(KotlinJsonAdapterFactory())
         .build()
 
     @Provides
-    fun provideGson(): Gson = GsonBuilder().create()
-
-    @Provides
-    fun provideCharacterService(retrofit: Retrofit): CharacterService = retrofit.create(CharacterService::class.java)
-
     @Singleton
-    @Provides
-    fun provideCharacterRemoteDataSource(characterService: CharacterService) = CharacterRemoteDataSource(characterService)
-
-    @Singleton
-    @Provides
-    fun provideRepository(remoteDataSource: CharacterRemoteDataSource) =
-        CharacterRepository(remoteDataSource)
+    fun provideUserService(moshi: Moshi): UserApiService {
+        return Retrofit
+            .Builder()
+            .run {
+                baseUrl(UserApiService.BASE_URL)
+                addConverterFactory(MoshiConverterFactory.create(moshi))
+                build()
+            }.create(UserApiService::class.java)
+    }
 }

@@ -1,12 +1,3 @@
 <resources>
     <string name="app_name">GithubUserProject</string>
-    <dimen name="dimen_100dp">100dp</dimen>
-    <dimen name="dimen_150dp">150dp</dimen>
-    <dimen name="dimen_8dp">8dp</dimen>
-    <dimen name="dimen_4dp">4dp</dimen>
-    <dimen name="dimen_120dp">120dp</dimen>
-    <dimen name="dimen_12dp">12dp</dimen>
-    <dimen name="dimen_1dp">1dp</dimen>
-    <dimen name="dimen_16dp">16dp</dimen>
-    <dimen name="dimen_24dp">24dp</dimen>
 </resources>
