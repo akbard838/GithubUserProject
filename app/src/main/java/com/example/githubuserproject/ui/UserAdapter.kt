@@ -13,7 +13,8 @@ import com.example.githubuserproject.utils.emptyString
 import com.example.githubuserproject.utils.setImagePath
 
 class UserAdapter(
-    private val users: ArrayList<UserResponse>
+    private val users: ArrayList<UserResponse>,
+    val listener: OnUserItemListener? = null
 ) : RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {
@@ -34,6 +35,9 @@ class UserAdapter(
                 pbUser,
                 0
             )
+            itemView.setOnClickListener {
+                listener?.onUserItemClicked(data)
+            }
         }
     }
 
@@ -46,5 +50,9 @@ class UserAdapter(
         val tvName = itemView.findViewById<AppCompatTextView>(R.id.tvName)
         val tvId = itemView.findViewById<AppCompatTextView>(R.id.tvId)
         val pbUser = itemView.findViewById<ProgressBar>(R.id.pbUser)
+    }
+
+    interface OnUserItemListener {
+        fun onUserItemClicked(user: UserResponse)
     }
 }

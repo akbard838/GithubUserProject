@@ -11,7 +11,6 @@ import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.RequestOptions
 import com.bumptech.glide.request.target.Target
 
-
 fun ImageView.setImagePath(context: Context, imagePath: String, progressBar: ProgressBar, errorResourceId: Int) {
     val options = RequestOptions()
         .error(errorResourceId)

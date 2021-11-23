@@ -14,6 +14,10 @@ fun View.visible() {
     this.visibility = View.VISIBLE
 }
 
+fun View.invisible() {
+    this.visibility = View.INVISIBLE
+}
+
 fun showToast(context: Context, message: String?){
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
 }

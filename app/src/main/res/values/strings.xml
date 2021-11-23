@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GithubUserProject</string>
+    <string name="action_retry">Retry</string>
+    <string name="message_something_wrong">Oopss, something wrong!</string>
 </resources>

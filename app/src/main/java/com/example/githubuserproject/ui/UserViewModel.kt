@@ -13,8 +13,8 @@ class UserViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : ViewModel() {
 
-    fun getUsers(sinceId: Int, perPage: Int): Flow<ApiResponse<List<UserResponse>?>> {
-        return userRepository.getUsers(sinceId, perPage)
+    fun getUsers(sinceId: Int): Flow<ApiResponse<List<UserResponse>?>> {
+        return userRepository.getUsers(sinceId, 10)
     }
 //    val users = userRepository.getUsers(10, 100)
 }

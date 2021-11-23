@@ -81,6 +81,9 @@ dependencies {
 
     //Metadata
     kapt("org.jetbrains.kotlinx:kotlinx-metadata-jvm:0.2.0")
+
+    //SwipeRefreshLayout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 }
 
 kapt {
