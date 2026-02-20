@@ -1,6 +1,8 @@
 {
     "name" : "*.nbsdev.io",
     "pins" : [
-        "sha256//uWL7TSdqqHj/NS/kxcuwipbfK+ogh8mtf7FTIxgn78="
+        "sha256/t1pq0DvIRBVS4U9bAOatfm/EnXouEca3TOFX71+8g10=",
+        "sha256/i7WTqTvh0OioIruIfFR4kMPnBqrS2rdiVPl/s2uC/CY=",
+        "sha256/Wec45nQiFwKvHtuHxSAMGkt19k+uPSw9JlEkxhvYPHk="
     ]
 }
