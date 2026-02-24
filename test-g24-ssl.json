@@ -1,7 +1,7 @@
 {
   "fingerprints": [
     {
-      "name" : "nbsdev.io",
+      "name" : "*.nbsdev.io",
       "fingerprint" : "EcjdRu5n4cA1yOMJyv6Q6lQzUxezPSoFZHzIZRsySw0=",
       "expires" : 1775935717,
       "signature" : "MEYCIQCfG2fFpOsRq8E1qBZYH+zJlOBs0SgKmjN7wRdP5UrEEwIhAPxGDCeYd2GiYIuIHjpcln5vKEXkg3737wL6LXcDwJuv"
